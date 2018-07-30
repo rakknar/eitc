@@ -39,6 +39,8 @@ def computeEitc (df, income_colname, corner_1, corner_2, corner_3, max_payout):
   df["eitc"] = df["seg-1"] + df["seg-2"] + df["seg-3"]
   df["eitc+income"] = df[income_colname] + df["eitc"] # post-eitc income
   
-  cost = df["eitc"].sum()
+  cost_in_trillions = ( df["eitc"].sum()           # scale to actual population size, 49 million
+                        * (49e6 / len(df["eitc"])) # add every eitc expenditure
+                        / 1e12 )                   # put it in trillions
 
-  return(df, cost)
+  return(df, cost_in_trillions)
