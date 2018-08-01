@@ -15,6 +15,7 @@ if True: # The data
   data["w_m_gross"].fillna(0, inplace=True) # wage
   data["profit"].fillna(0, inplace=True)    # non-wage
   data["month_inc"] = data["profit"] + data["w_m_gross"]
+  data["hh"] = data["hh_id1"].astype(str) + "-" + data["hh_id2"].astype(str)
 
 if True: # The fraction of the data I need
   small = data.copy()[["month_inc"]]
