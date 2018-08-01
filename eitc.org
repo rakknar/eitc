@@ -5,15 +5,17 @@
 *** what happens with a work requirement?
 **** e.g. what if we restrict it to 40hr+ workers
 **** French, British do
-*** compute how many people it would lift
+*** compute how many households it would lift
 **** above each poverty line
 **** above the min wage
-*** poverty gap
+*** TODO poverty gap
 **** dane defines poverty lines
 ** understand data
-*** what about households v. individuals?
+*** households v. individuals
+**** are hh_id1 ("directorio") and hh_id2 ("secuencia_p") in fact sufficient to create a unique household id?
+**** compute EITC bonuses individually, but poverty gap at household level
 *** may not be able to decompose into small income brackets, but estratos would do
-*** verify missing data is a reasonable fraction
+*** TODO verify missing data is a reasonable fraction
 *** state the effective tax rate per estrato
 *** GEIH is the main data source; get familiar
 ** look for lit on marg tax rate effect
