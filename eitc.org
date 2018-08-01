@@ -1,5 +1,6 @@
 * documentation
 ** https://formularios.dane.gov.co/Anda_4_1/index.php/catalog/427
+** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
 * todo
 ** consider effects
 *** what happens with a work requirement?
@@ -12,7 +13,9 @@
 **** dane defines poverty lines
 ** understand data
 *** households v. individuals
-**** are hh_id1 ("directorio") and hh_id2 ("secuencia_p") in fact sufficient to create a unique household id?
+**** are hh_id1 ("directorio") and hh_id2 ("secuencia_p") in fact sufficient for a unique household id?
+***** A potential check: Every directorio for which the maximum secuencia is k > 1 should have secuencia values from 1 through k
+***** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
 **** compute EITC bonuses individually, but poverty gap at household level
 *** may not be able to decompose into small income brackets, but estratos would do
 *** TODO verify missing data is a reasonable fraction
