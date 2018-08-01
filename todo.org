@@ -1,24 +1,17 @@
-what about households v. individuals?
-
-dane defines poverty lines
-
-compute how many people it would lift
-  above each poverty line
-  above the min wage
-
-poverty gap
-
-what happens with a work requirement?
-  e.g. what if we restrict it to 40hr+ workers
-  French, British do
-
-look for lit on marg tax rate effect
-
-duque's tax reform is promised for aug 7
-
-verify missing data is a reasonable fraction
-
-may not be able to decompose into small income brackets, but estratos would od
-  state the effective tax rate per estrato
-
-GEIH is the main data source; get familiar
+* consider effects
+** what happens with a work requirement?
+*** e.g. what if we restrict it to 40hr+ workers
+*** French, British do
+** compute how many people it would lift
+*** above each poverty line
+*** above the min wage
+** poverty gap
+*** dane defines poverty lines
+* understand data
+** what about households v. individuals?
+** may not be able to decompose into small income brackets, but estratos would do
+** verify missing data is a reasonable fraction
+** state the effective tax rate per estrato
+** GEIH is the main data source; get familiar
+* look for lit on marg tax rate effect
+* duque's tax reform is promised for aug 7
