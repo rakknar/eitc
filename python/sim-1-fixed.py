@@ -29,14 +29,16 @@ def add_eitc_columns (df, income_colname, corner_1, corner_2, corner_3, max_payo
   return(df, cost_in_trillions)
 
 
-def add_poverty_gap_change (df, income_0_colname, income_1_colname):
+def add_poverty_gap_change (df, income_0_colname, income_1_colname, household_size_column):
+  size = df[household_size_column]
+
   x = df[income_0_colname]
-  df[        "poverty_0"] = np.where( x <         poverty,         poverty - x, 0 )
-  df["extreme_poverty_0"] = np.where( x < extreme_poverty, extreme_poverty - x, 0 )
+  df[        "poverty_0"] = np.where( x <         poverty * size,         poverty * size - x, 0 )
+  df["extreme_poverty_0"] = np.where( x < extreme_poverty * size, extreme_poverty * size - x, 0 )
 
   x = df[income_1_colname]
-  df[        "poverty_1"] = np.where( x <         poverty,         poverty - x, 0 )
-  df["extreme_poverty_1"] = np.where( x < extreme_poverty, extreme_poverty - x, 0 )
+  df[        "poverty_1"] = np.where( x <         poverty * size,         poverty * size - x, 0 )
+  df["extreme_poverty_1"] = np.where( x < extreme_poverty * size, extreme_poverty * size - x, 0 )
 
   df[        "poverty_drop"] = df[        "poverty_0"] - df[        "poverty_1"]
   df["extreme_poverty_drop"] = df["extreme_poverty_0"] - df["extreme_poverty_1"]
@@ -47,10 +49,10 @@ def add_poverty_gap_change (df, income_0_colname, income_1_colname):
   return ( df, poverty_drop, extreme_poverty_drop )
 
 
-def add_poverty_exits (df, income_0_colname, income_1_colname):
-  inc0, inc1 = income_0_colname, income_1_colname
-  df[        "poverty_exit"] = (df[inc0] <         poverty) & (df[inc1] >         poverty)
-  df["extreme_poverty_exit"] = (df[inc0] < extreme_poverty) & (df[inc1] > extreme_poverty)
+def add_poverty_exits (df, income_0_colname, income_1_colname, household_size_colname):
+  inc0, inc1, size = df[income_0_colname], df[income_1_colname], df[household_size_colname]
+  df[        "poverty_exit"] = (inc0 <         poverty * size) & (inc1 >         poverty * size)
+  df["extreme_poverty_exit"] = (inc0 < extreme_poverty * size) & (inc1 > extreme_poverty * size)
   poverty_exits         = scale_to_population * df[        "poverty_exit"].sum()
   extreme_poverty_exits = scale_to_population * df["extreme_poverty_exit"].sum()
   return ( df, poverty_exits, extreme_poverty_exits )

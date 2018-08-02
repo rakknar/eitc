@@ -22,19 +22,20 @@ if True: # manicure the data
   ppl["wage_g_m"]  .fillna(0, inplace=True)    # wage
   ppl["profit_g_m"].fillna(0, inplace=True)    # non-wage
   ppl["income_g_m"] = ppl["profit_g_m"] + ppl["wage_g_m"]
+  ppl["persons"] = 1
 
 
 if True: # results
   ppl,cost_in_trillions = add_eitc_columns( ppl, "income_g_m", corner_1, corner_2, corner_3, max_payout )
 
   hh_groups = ppl.groupby(['hh_id1', 'hh_id2'])
-  hhs = (        hh_groups[[ "income_g_m", "income+eitc"                         ]].agg('sum')
+  hhs = (        hh_groups[[ "income_g_m", "income+eitc", "persons"              ]].agg('sum')
           .join( hh_groups[[ col for col in ppl.columns if col.startswith('seg') ]].agg('max') )
   )
   
   hhs, drop_in_billions, extreme_drop_in_billions = add_poverty_gap_change( hhs, "income_g_m", "income+eitc" )
 
-  hhs, poverty_exits, extreme_poverty_exits = add_poverty_exits( hhs, "income_g_m", "income+eitc" )
+  hhs, poverty_exits, extreme_poverty_exits = add_poverty_exits( hhs, "income_g_m", "income+eitc", "persons" )
 
   print( cost_in_trillions, drop_in_billions, extreme_drop_in_billions, poverty_exits, extreme_poverty_exits )
 
