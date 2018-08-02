@@ -10,15 +10,18 @@ if True: # The EITC parameters
   max_payout = 300 # max payout
 
 if True: # The data
-  data = pd.read_csv("data/2016-wages.csv")
+  ppl = pd.read_csv("data/2016-wages.csv")
   # The next two variables are mutually exclusive.
-  data["w_m_gross"].fillna(0, inplace=True) # wage
-  data["profit"].fillna(0, inplace=True)    # non-wage
-  data["month_inc"] = data["profit"] + data["w_m_gross"]
-  data["hh"] = data["hh_id1"].astype(str) + "-" + data["hh_id2"].astype(str)
+  ppl["w_m_gross"].fillna(0, inplace=True) # wage
+  ppl["profit"].fillna(0, inplace=True)    # non-wage
+  ppl["month_inc"] = ppl["profit"] + ppl["w_m_gross"]
+  # ppl["hh"] = ppl["hh_id1"].astype(str) + "-" + ppl["hh_id2"].astype(str)
+    # maybe not needed, since we can group (see hhs definition) on two columns
 
-if True: # The fraction of the data I need
-  small = data.copy()[["month_inc"]]
+  hhs = ( ppl.groupby(['hh_id1', 'hh_id2'])
+          [["month_inc"]].agg('sum') )
+  
+  ppl_brief = ppl.copy()[["month_inc"]]
 
 fake = pd.DataFrame(
   columns = ["inc-0"], # pre-eitc income
@@ -44,4 +47,4 @@ def computeEitc (df, income_colname, corner_1, corner_2, corner_3, max_payout):
 
   return(df, cost_in_trillions)
 
-df2,cost = computeEitc( small, "month_inc", 300e3, 600e3, 1200e3, 300e3 )
+df2,cost = computeEitc( ppl_brief, "month_inc", 300e3, 600e3, 1200e3, 300e3 )
