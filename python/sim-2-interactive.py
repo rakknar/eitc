@@ -25,14 +25,18 @@ if True: # manicure the data
 
 
 if True: # results
-  ppl,cost = add_eitc_columns( ppl, "income_g_m", corner_1, corner_2, corner_3, max_payout )
+  ppl,cost_in_trillions = add_eitc_columns( ppl, "income_g_m", corner_1, corner_2, corner_3, max_payout )
 
   hh_groups = ppl.groupby(['hh_id1', 'hh_id2'])
   hhs = (        hh_groups[[ "income_g_m", "income+eitc"                         ]].agg('sum')
           .join( hh_groups[[ col for col in ppl.columns if col.startswith('seg') ]].agg('max') )
   )
   
-  hhs, drop, extreme_drop = compute_poverty_gap_change( hhs, "income_g_m", "income+eitc" )
+  hhs, drop_in_billions, extreme_drop_in_billions = add_poverty_gap_change( hhs, "income_g_m", "income+eitc" )
+
+  hhs, poverty_exits, extreme_poverty_exits = add_poverty_exits( hhs, "income_g_m", "income+eitc" )
+
+  print( cost_in_trillions, drop_in_billions, extreme_drop_in_billions, poverty_exits, extreme_poverty_exits )
 
 
 if False: # some data checks.  I eyeballed these and similar ones; they look good.
@@ -44,3 +48,6 @@ if False: # some data checks.  I eyeballed these and similar ones; they look goo
 
   x = hhs[ hhs["seg-2"] > 0 ]
   x[['income_g_m', 'income+eitc', 'poverty_0', 'poverty_1', 'poverty_drop']]
+
+  x = hhs[ hhs["seg-1"] > 0 ]
+  x[['income_g_m', 'income+eitc', 'poverty_exit', 'extreme_poverty_exit']]
