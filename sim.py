@@ -3,29 +3,36 @@ import numpy as np
 import math as math
 
 
-if True: # The EITC parameters
-  corner_1 = 300 # income level where the first corner lies
-  corner_2 = 600
-  corner_3 = 1200
-  max_payout = 300 # max payout
+if True: # set some parameters
+  if True: # parameters of the EITC
+    corner_1 = 300 # income level where the first corner lies
+    corner_2 = 600
+    corner_3 = 1200
+    max_payout = 300 # max payout
+
+  if True: # 2016 poverty lines
+    poverty =         241673
+    extreme_poverty = 114692
 
 if True: # The data
-  ppl = pd.read_csv("data/2016-wages.csv")
+  raw = pd.read_csv("data/2016-wages.csv").rename(columns = {"w_m_gross":"wage_g_m", "profit":"profit_g_m"} )
+  ppl = raw.copy()[['wage_g_m', 'profit_g_m', 'hh_id1', 'hh_id2']]
+
   # The next two variables are mutually exclusive.
-  ppl["w_m_gross"].fillna(0, inplace=True) # wage
-  ppl["profit"].fillna(0, inplace=True)    # non-wage
-  ppl["month_inc"] = ppl["profit"] + ppl["w_m_gross"]
+  ppl["wage_g_m"].fillna(0, inplace=True) # wage
+  ppl["profit_g_m"].fillna(0, inplace=True)    # non-wage
+  ppl["income_g_m"] = ppl["profit_g_m"] + ppl["wage_g_m"]
   # ppl["hh"] = ppl["hh_id1"].astype(str) + "-" + ppl["hh_id2"].astype(str)
-    # maybe not needed, since we can group (see hhs definition) on two columns
+    # maybe not needed, since we can group (see definition of the frame "hhs") on two columns
 
   hhs = ( ppl.groupby(['hh_id1', 'hh_id2'])
-          [["month_inc"]].agg('sum') )
+          [["income_g_m"]].agg('sum') )
   
-  ppl_brief = ppl.copy()[["month_inc"]]
+  ppl_brief = ppl.copy()[["income_g_m"]]
 
-fake = pd.DataFrame(
-  columns = ["inc-0"], # pre-eitc income
-  data = [[x*100] for x in range(math.floor(corner_3*1.5/100))] )
+  fake_data = pd.DataFrame(
+    columns = ["inc-0"], # pre-eitc income
+    data = [[x*100] for x in range(math.floor(corner_3*1.5/100))] )
 
 def computeEitc (df, income_colname, corner_1, corner_2, corner_3, max_payout):
   x = df[income_colname]
@@ -47,4 +54,4 @@ def computeEitc (df, income_colname, corner_1, corner_2, corner_3, max_payout):
 
   return(df, cost_in_trillions)
 
-df2,cost = computeEitc( ppl_brief, "month_inc", 300e3, 600e3, 1200e3, 300e3 )
+df2,cost = computeEitc( ppl_brief, "income_g_m", 300e3, 600e3, 1200e3, 300e3 )
