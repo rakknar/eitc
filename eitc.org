@@ -1,8 +1,8 @@
 * context
 ** poverty lines
 *** http://www.dane.gov.co/files/investigaciones/condiciones_vida/pobreza/bol_pobreza_17.pdf
-*** the 2016 national poverty line: 241.673 
-*** the 2016 national extreme poverty line: 114.692 
+*** the 2016 national poverty line:         241,673
+*** the 2016 national extreme poverty line: 114,692
 ** data documentation
 *** https://formularios.dane.gov.co/Anda_4_1/index.php/catalog/427
 *** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
