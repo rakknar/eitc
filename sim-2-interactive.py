@@ -1,6 +1,7 @@
 # Run this after sim-1-fixed.py
 # That file probably won't need changes; this one is meant to be fiddled with.
 
+
 if True: # set some parameters
   if True: # parameters of the EITC
     corner_1 = 300e3 # income level where the first corner lies
@@ -12,22 +13,34 @@ if True: # set some parameters
     poverty =         241673
     extreme_poverty = 114692
 
+
 if True: # manicure the data
   ppl = raw.copy()[['wage_g_m', 'profit_g_m', 'hh_id1', 'hh_id2']]
     # ppl drops from raw the hours variables, among others
 
   # "wage" and "profit" in this data are mutually exclusive.
-  ppl["wage_g_m"].fillna(0, inplace=True)      # wage
+  ppl["wage_g_m"]  .fillna(0, inplace=True)    # wage
   ppl["profit_g_m"].fillna(0, inplace=True)    # non-wage
   ppl["income_g_m"] = ppl["profit_g_m"] + ppl["wage_g_m"]
 
-ppl,cost = add_eitc_columns( ppl, "income_g_m", corner_1, corner_2, corner_3, max_payout )
 
-hhs = ( ppl.groupby(['hh_id1', 'hh_id2'])
-        [["income_g_m", "income+eitc"]].agg('sum') )
+if True: # results
+  ppl,cost = add_eitc_columns( ppl, "income_g_m", corner_1, corner_2, corner_3, max_payout )
 
-hhs, drop, extreme_drop = compute_poverty_gap_change( hhs, "income_g_m", "income+eitc" )
+  hh_groups = ppl.groupby(['hh_id1', 'hh_id2'])
+  hhs = (        hh_groups[[ "income_g_m", "income+eitc"                         ]].agg('sum')
+          .join( hh_groups[[ col for col in ppl.columns if col.startswith('seg') ]].agg('max') )
+  )
+  
+  hhs, drop, extreme_drop = compute_poverty_gap_change( hhs, "income_g_m", "income+eitc" )
 
-pd.set_option('display.max_columns', 20)
-x = hhs[ (hhs["extreme_poverty_0"] > 0) & (hhs["income_g_m"] > 0) ]
-x[['income_g_m', 'income+eitc', 'poverty_0', 'poverty_1', 'poverty_drop']]
+
+if False: # some data checks.  I eyeballed these and similar ones; they look good.
+  pd.set_option('display.max_columns', 20) # If on a small screen, futz with this
+
+  x = hhs[ (hhs["extreme_poverty_0"] > 0) & (hhs["income_g_m"] > 0) ]
+  ( x[ x["poverty_0"] > 0]
+    [['income_g_m', 'income+eitc', 'poverty_0', 'poverty_1', 'poverty_drop']] )
+
+  x = hhs[ hhs["seg-2"] > 0 ]
+  x[['income_g_m', 'income+eitc', 'poverty_0', 'poverty_1', 'poverty_drop']]
