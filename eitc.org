@@ -17,10 +17,15 @@
 **** are hh_id1 ("directorio") and hh_id2 ("secuencia_p") in fact sufficient for a unique household id?
 ***** A potential check: Every directorio for which the maximum secuencia is k > 1 should have secuencia values from 1 through k
 ***** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
-*** may not be able to decompose into small income brackets, but estratos would do
 *** TODO verify missing data|zeroes are a reasonable fraction
-*** state the effective tax rate per estrato
 *** GEIH is the main data source; get familiar
 ** extend the model
+*** consider estrato
+**** may not be able to decompose into small income brackets, but estratos would do
+**** state the effective tax rate per estrato
 *** rather than the national poverty line, use regional ones
 ** look for lit on marg tax rate effect
+*** CBO's estimates of labor supply elasticities
+**** https://www.cbo.gov/sites/default/files/112th-congress-2011-2012/reports/43674-laborsupplyfiscalpolicy.pdf
+*** these elasticities ought to take into account income and hours worked
+**** e.g. if you're working an enormous amount already, you're less likely to substitute toward yet more work
