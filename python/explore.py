@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("data/workdata_2016_wages.csv")
+df = pd.read_csv("data/2016-wages.csv")
 
 print("About 80% of these values are missing.")
 for x in df.columns:

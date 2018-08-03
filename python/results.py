@@ -1,24 +1,4 @@
-# Run this after sim-1-fixed.py
-# That file probably won't need changes; this one is meant to be fiddled with.
-
-
-if True: # set some parameters
-  if True: # parameters of the EITC
-    corner_1 = 300e3 # income level where the first corner lies
-    corner_2 = 600e3
-    corner_3 = 1200e3
-    max_payout = 300e3 # max payout
-
-
-if True: # manicure the data
-  ppl = raw.copy()[['wage_g_m', 'profit_g_m', 'hh_id1', 'hh_id2']]
-    # ppl drops from raw the hours variables, among others
-
-  # "wage" and "profit" in this data are mutually exclusive.
-  ppl["wage_g_m"]  .fillna(0, inplace=True)    # wage
-  ppl["profit_g_m"].fillna(0, inplace=True)    # non-wage
-  ppl["income_g_m"] = ppl["profit_g_m"] + ppl["wage_g_m"]
-  ppl["persons"] = 1
+import pandas as pd
 
 
 if True: # results
