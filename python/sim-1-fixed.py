@@ -3,9 +3,16 @@ import numpy as np
 import math as math
 
 
-raw = pd.read_csv("data/2016-wages.csv").rename(columns = {"w_m_gross":"wage_g_m", "profit":"profit_g_m"} )
+if True: # some data
+  if True: # 2016 poverty lines
+    poverty =         241673
+    extreme_poverty = 114692
+    min_wage =        689454
 
-scale_to_population = 49e6 / len(raw) # TODO ? is ratio of individuals, could be different for households
+  raw = pd.read_csv("data/2016-wages.csv").rename(columns = {"w_m_gross":"wage_g_m", "profit":"profit_g_m"} )
+  
+  scale_to_population = 49e6 / len(raw)
+    # TODO ? This is a ratio of individuals. Could it be different for households?
 
 
 def add_eitc_columns (df, income_colname, corner_1, corner_2, corner_3, max_payout):
