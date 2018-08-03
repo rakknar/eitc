@@ -37,10 +37,10 @@ def add_poverty_gap_change (df, income_0_colname, income_1_colname, household_si
   df[        "poverty_drop"] = df[        "poverty_0"] - df[        "poverty_1"]
   df["extreme_poverty_drop"] = df["extreme_poverty_0"] - df["extreme_poverty_1"]
 
-  poverty_drop         = (scale_to_population / 1e9) * df[        "poverty_drop"].sum()
-  extreme_poverty_drop = (scale_to_population / 1e9) * df["extreme_poverty_drop"].sum()
+  poverty_drop_in_billions         = (scale_to_population / 1e9) * df[        "poverty_drop"].sum()
+  extreme_poverty_drop_in_billions = (scale_to_population / 1e9) * df["extreme_poverty_drop"].sum()
 
-  return ( df, poverty_drop, extreme_poverty_drop )
+  return ( df, poverty_drop_in_billions, extreme_poverty_drop_in_billions )
 
 
 def add_poverty_exits (df, income_0_colname, income_1_colname, household_size_colname):
@@ -48,7 +48,7 @@ def add_poverty_exits (df, income_0_colname, income_1_colname, household_size_co
   df[        "poverty_exit"] = (inc0 <         poverty * size) & (inc1 >         poverty * size)
   df["extreme_poverty_exit"] = (inc0 < extreme_poverty * size) & (inc1 > extreme_poverty * size)
   df[       "min_wage_exit"] = (inc0 <        min_wage * size) & (inc1 >        min_wage * size)
-  poverty_exits         = scale_to_population * df[        "poverty_exit"].sum()
-  extreme_poverty_exits = scale_to_population * df["extreme_poverty_exit"].sum()
-  min_wage_exits        = scale_to_population * df[       "min_wage_exit"].sum()
-  return ( df, poverty_exits, extreme_poverty_exits, min_wage_exits )
+  poverty_exits_in_thousands         = (scale_to_population / 1e3) * df[        "poverty_exit"].sum()
+  extreme_poverty_exits_in_thousands = (scale_to_population / 1e3) * df["extreme_poverty_exit"].sum()
+  min_wage_exits_in_thousands        = (scale_to_population / 1e3) * df[       "min_wage_exit"].sum()
+  return ( df, poverty_exits_in_thousands, extreme_poverty_exits_in_thousands, min_wage_exits_in_thousands )

@@ -14,10 +14,10 @@ if True: # project-external (fixed) data
 
 
 if True: # project-internal (can vary) data
-  if True: # manicure the data
+  if True: # the person-level data
     ppl = raw.copy()[['wage_g_m', 'profit_g_m', 'hh_id1', 'hh_id2']]
       # ppl drops from raw the hours variables, among others
-  
+
     # "wage" and "profit" in this data are mutually exclusive.
     ppl["wage_g_m"]  .fillna(0, inplace=True)    # wage
     ppl["profit_g_m"].fillna(0, inplace=True)    # non-wage
@@ -25,8 +25,11 @@ if True: # project-internal (can vary) data
     ppl["persons"] = 1
 
   if True: # EITC parameters
-    corner_1 = 300e3 # income level where the first corner lies
-    corner_2 = 600e3
+    corner_1 = 200e3
+    corner_2 = 300e3
     corner_3 = 1200e3
-    max_payout = 300e3 # max payout
-  
+    max_payout = 300e3
+#    corner_1 = 300e3
+#    corner_2 = 600e3
+#    corner_3 = 1200e3
+#    max_payout = 300e3
