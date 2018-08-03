@@ -8,14 +8,10 @@
 *** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
 ** duque's tax reform is promised for aug 7
 * todo
-** TODO fix: poverty lines are per capita; divide household income by household size to compare well
 ** consider effects
 *** what happens with a work requirement?
 **** e.g. what if we restrict it to 40hr+ workers
 **** French, British do
-*** compute how many households it would lift
-**** above each poverty line
-**** above the min wage
 ** understand data
 *** households v. individuals
 **** are hh_id1 ("directorio") and hh_id2 ("secuencia_p") in fact sufficient for a unique household id?

@@ -53,6 +53,8 @@ def add_poverty_exits (df, income_0_colname, income_1_colname, household_size_co
   inc0, inc1, size = df[income_0_colname], df[income_1_colname], df[household_size_colname]
   df[        "poverty_exit"] = (inc0 <         poverty * size) & (inc1 >         poverty * size)
   df["extreme_poverty_exit"] = (inc0 < extreme_poverty * size) & (inc1 > extreme_poverty * size)
+  df[       "min_wage_exit"] = (inc0 <        min_wage * size) & (inc1 >        min_wage * size)
   poverty_exits         = scale_to_population * df[        "poverty_exit"].sum()
   extreme_poverty_exits = scale_to_population * df["extreme_poverty_exit"].sum()
-  return ( df, poverty_exits, extreme_poverty_exits )
+  min_wage_exits        = scale_to_population * df[       "min_wage_exit"].sum()
+  return ( df, poverty_exits, extreme_poverty_exits, min_wage_exits )

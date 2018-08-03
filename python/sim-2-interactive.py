@@ -12,7 +12,7 @@ if True: # set some parameters
   if True: # 2016 poverty lines
     poverty =         241673
     extreme_poverty = 114692
-
+    min_wage =        689454
 
 if True: # manicure the data
   ppl = raw.copy()[['wage_g_m', 'profit_g_m', 'hh_id1', 'hh_id2']]
@@ -36,10 +36,16 @@ if True: # results
   hhs, drop_in_billions, extreme_drop_in_billions = add_poverty_gap_change(
     hhs, "income_g_m", "income+eitc", "persons" )
 
-  hhs, poverty_exits, extreme_poverty_exits = add_poverty_exits(
+  hhs, poverty_exits, extreme_poverty_exits, min_wage_exits = add_poverty_exits(
     hhs, "income_g_m", "income+eitc", "persons" )
 
-  print( cost_in_trillions, drop_in_billions, extreme_drop_in_billions, poverty_exits, extreme_poverty_exits )
+  print( " cost_in_trillions: " + str( cost_in_trillions ) + '\n',
+         "drop_in_billions: " + str( drop_in_billions ) + '\n',
+         "extreme_drop_in_billions: " + str( extreme_drop_in_billions ) + '\n',
+         "poverty_exits: " + str( poverty_exits ) + '\n',
+         "extreme_poverty_exits: " + str( extreme_poverty_exits ) + '\n',
+         "min_wage_exits: " + str( min_wage_exits )
+  )
 
 
 if False: # some data checks.  I eyeballed these and similar ones; they look good.
