@@ -9,10 +9,6 @@ if True: # set some parameters
     corner_3 = 1200e3
     max_payout = 300e3 # max payout
 
-  if True: # 2016 poverty lines
-    poverty =         241673
-    extreme_poverty = 114692
-    min_wage =        689454
 
 if True: # manicure the data
   ppl = raw.copy()[['wage_g_m', 'profit_g_m', 'hh_id1', 'hh_id2']]
@@ -32,7 +28,7 @@ if True: # results
   hhs = (        hh_groups[[ "income_g_m", "income+eitc", "persons"              ]].agg('sum')
           .join( hh_groups[[ col for col in ppl.columns if col.startswith('seg') ]].agg('max') )
   )
-  
+
   hhs, drop_in_billions, extreme_drop_in_billions = add_poverty_gap_change(
     hhs, "income_g_m", "income+eitc", "persons" )
 
