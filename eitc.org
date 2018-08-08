@@ -7,9 +7,25 @@
 *** https://formularios.dane.gov.co/Anda_4_1/index.php/catalog/427
 *** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
 ** duque's tax reform is promised for aug 7
+* problems
+** It looks like most income was not reported
+The difference between 0 and NaN is problematic. If a value is not positive, it's almost always NaN. But it *is* occasionally zero: gross wage is zero 882 times, and gross non-wage profit is zero 5333 times. By contrast, both variables are NaN in more than 623,000 places, in a data set of 778,238 observations.
+
+When I look up w_m_gross in the questionnaire, I see this:
+  Si no recibió salario en dinero, registre 00.
+  Si recibió pero no sabe el monto, registre 98.
+  Si no informa el monto que recibió, registre 99.
+
+That would seem to suggest that all those NaN values are people who made money but did not report how much. I see basically the same thing for profit:
+  Si no obtuvo ganancias, registre 00;
+  si obtuvo pero no sabe el monto, registre 98;
+  si no informa si obtuvo, registre 99.
+
 * todo
-** consider effects
-*** what happens with a work requirement?
+** DONE Asking Adrian: estrato? zero v. missing?
+** TODO Ask David: zero v. missing?
+** consider effects 
+*** TODO what happens with a work requirement?
 **** e.g. what if we restrict it to 40hr+ workers
 **** French, British do
 ** understand data
@@ -17,7 +33,6 @@
 **** are hh_id1 ("directorio") and hh_id2 ("secuencia_p") in fact sufficient for a unique household id?
 ***** A potential check: Every directorio for which the maximum secuencia is k > 1 should have secuencia values from 1 through k
 ***** "The closest you will find to a document connecting the raw datasets to the questionnaires is the ddi-documentation-spanish-427.pdf file. In fact, "Directorio" and "Secuencia_p" are probably the only two variables not really well described on the file. On almost all other cases you should find an exact correspondence with the questionnaire. For example, variable named v496 with description "1. Incluyendo sala-comedor de cuntos cuartos en total dispone este hogar?" corresponds to the question #2 on section C. in page 2 of the questionnaire "Cuestionario GEIH.pdf"." -- adrian
-*** TODO verify missing data|zeroes are a reasonable fraction
 *** GEIH is the main data source; get familiar
 ** extend the model
 *** consider estrato
@@ -25,7 +40,9 @@
 **** state the effective tax rate per estrato
 *** rather than the national poverty line, use regional ones
 ** look for lit on marg tax rate effect
-*** CBO's estimates of labor supply elasticities
+*** CBO's estimates of labor supply elasticities: around 0.27
 **** https://www.cbo.gov/sites/default/files/112th-congress-2011-2012/reports/43674-laborsupplyfiscalpolicy.pdf
+**** see table 1, p. 4
+*** they depend on earnings & being a primary or secondary worker
 *** these elasticities ought to take into account income and hours worked
 **** e.g. if you're working an enormous amount already, you're less likely to substitute toward yet more work
