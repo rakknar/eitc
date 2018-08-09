@@ -22,6 +22,7 @@ That would seem to suggest that all those NaN values are people who made money b
   si no informa si obtuvo, registre 99.
 
 * todo
+** poverty gap: express as percentage
 ** DONE Asking Adrian: estrato? zero v. missing?
 ** TODO Ask David: zero v. missing?
 ** consider effects 
