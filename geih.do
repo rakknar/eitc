@@ -3,7 +3,7 @@
 *---------------------------------------------------------------------
 * Michigan State University		                      
 * Department of Economics				                      
-* Written by: Pablo Adrian Garlati Bertoldi (garlatib@msu.edu) 
+* Written by: Pablo Adrian Garlati Bertoldi (adriangarlati@gmail.com) 
 * Function: process GEIH data                                       
 *---------------------------------------------------------------------
 /*
@@ -380,22 +380,22 @@ forvalues y = 2008/2016 {
     *department
     gen     department = ""
     replace department = "Antioquia"           if dpto == "05"
-    replace department = "Atlántico"           if dpto == "08"
-    replace department = "Bogotá DC"           if dpto == "11"
-    replace department = "Bolívar"             if dpto == "13"
-    replace department = "Boyacá"              if dpto == "15"
+    replace department = "AtlÃ¡ntico"           if dpto == "08"
+    replace department = "BogotÃ¡ DC"           if dpto == "11"
+    replace department = "BolÃ­var"             if dpto == "13"
+    replace department = "BoyacÃ¡"              if dpto == "15"
     replace department = "Caldas"              if dpto == "17"
-    replace department = "Caquetá"             if dpto == "18"
+    replace department = "CaquetÃ¡"             if dpto == "18"
     replace department = "Cauca"               if dpto == "19"
     replace department = "Cesar"               if dpto == "20"
-    replace department = "Córdoba"             if dpto == "23"
+    replace department = "CÃ³rdoba"             if dpto == "23"
     replace department = "Cundinamarca"        if dpto == "25"
-    replace department = "Chocó"               if dpto == "27"
+    replace department = "ChocÃ³"               if dpto == "27"
     replace department = "Huila"               if dpto == "41"
     replace department = "La guajira"          if dpto == "44"
     replace department = "Magdalena"           if dpto == "47"
     replace department = "Meta"                if dpto == "50"
-    replace department = "Nariño"              if dpto == "52"
+    replace department = "NariÃ±o"              if dpto == "52"
     replace department = "Norte de santander"  if dpto == "54"
     replace department = "Quindio"             if dpto == "63"
     replace department = "Risaralda"           if dpto == "66"
@@ -408,48 +408,48 @@ forvalues y = 2008/2016 {
     
     *city                                            
     gen     city = "" 
-    replace city = "Medellín MA"       if area == "05" 
+    replace city = "MedellÃ­n MA"       if area == "05" 
     replace city = "Barranquilla MA"   if area == "08" 
-    replace city = "Bogotá DC"         if area == "11" 
+    replace city = "BogotÃ¡ DC"         if area == "11" 
     replace city = "Cartagena"         if area == "13"
     replace city = "Tunja"             if area == "15"
     replace city = "Manizales MA"      if area == "17"
     replace city = "Florencia"         if area == "18"
-    replace city = "Popayán"           if area == "19"
+    replace city = "PopayÃ¡n"           if area == "19"
     replace city = "Valledupar"        if area == "20"
-    replace city = "Montería"          if area == "23"
-    replace city = "Quibdó"            if area == "27"
+    replace city = "MonterÃ­a"          if area == "23"
+    replace city = "QuibdÃ³"            if area == "27"
     replace city = "Neiva"             if area == "41"
     replace city = "Riohacha"          if area == "44"
     replace city = "Santa Marta"       if area == "47"
     replace city = "Villavicencio"     if area == "50" 
     replace city = "Pasto"             if area == "52" 
-    replace city = "Cúcuta MA"         if area == "54"
+    replace city = "CÃºcuta MA"         if area == "54"
     replace city = "Armenia"           if area == "63"
     replace city = "Pereira MA"        if area == "66" 
     replace city = "Bucaramanga MA"    if area == "68"
     replace city = "Sincelejo"         if area == "70"
-    replace city = "Ibagué"            if area == "73" 
+    replace city = "IbaguÃ©"            if area == "73" 
     replace city = "Cali MA"           if area == "76"
     replace city = "Rest"              if area == ""
-    label define city 1  "Bogotá DC" ///
-                      2  "Medellín MA" ///
+    label define city 1  "BogotÃ¡ DC" ///
+                      2  "MedellÃ­n MA" ///
                       3  "Cali MA" ///
                       4  "Barranquilla MA" ///
                       5  "Bucaramanga MA" ///
                       6  "Manizales MA" ///
                       7  "Pasto" ///
                       8  "Pereira MA" ///
-                      9  "Cúcuta MA" ///
-                      10 "Ibagué" ///
-                      11 "Montería" ///
+                      9  "CÃºcuta MA" ///
+                      10 "IbaguÃ©" ///
+                      11 "MonterÃ­a" ///
                       12 "Cartagena" ///
                       13 "Villavicencio" ///
                       14 "Tunja" ///
                       15 "Florencia" ///
-                      16 "Popayán" ///
+                      16 "PopayÃ¡n" ///
                       17 "Valledupar" ///
-                      18 "Quibdó" ///
+                      18 "QuibdÃ³" ///
                       19 "Neiva" ///
                       20 "Riohacha" ///
                       21 "Santa Marta" ///
@@ -463,24 +463,24 @@ forvalues y = 2008/2016 {
     rename city_cod city
     
     *Cities groups
-    *13 áreas:  Bogotá D.C, ///
-              * Medellín - Valle de Aburrá, ///
+    *13 Ã¡reas:  BogotÃ¡ D.C, ///
+              * MedellÃ­n - Valle de AburrÃ¡, ///
               * Cali - Yumbo, ///
               * Barranquilla - Soledad, ///
-              * Bucaramanga, Girón, Piedecuesta y Floridablanca, ///
-              * Manizales y Villa María, ///
+              * Bucaramanga, GirÃ³n, Piedecuesta y Floridablanca, ///
+              * Manizales y Villa MarÃ­a, ///
               * Pasto, ///
               * Pereira, Dos Quebradas y La Virginia, ///
-              * Cúcuta, Villa del Rosario, Los Patios y El Zulia, ///
-              * Ibagué, ///
-              * Montería, ///
+              * CÃºcuta, Villa del Rosario, Los Patios y El Zulia, ///
+              * IbaguÃ©, ///
+              * MonterÃ­a, ///
               * Cartagena, ///
               * Villavicencio.
     *10 ciudades: Tunja, ///
               * Florencia, ///
-              * Popayán, /// 
+              * PopayÃ¡n, /// 
               * Valledupar, ///
-              * Quibdó, /// 
+              * QuibdÃ³, /// 
               * Neiva,  ///
               * Riohacha,  /// 
               * Santa Marta,  /// 
@@ -863,21 +863,21 @@ forvalues y = 2008/2016 {
     //DANE
     *inactive: all non-workers 
     replace inlf = 3 if p6240 >=2 & p6240 <=6
-    //Quiénes son los ocupados (OC)?
-    //Son las personas que durante el período de referencia se encontraban en una de las siguientes situaciones:
-    //1. Trabajó por lo menos una hora remunerada en dinero o en especie en la semana de referencia.
+    //QuiÃ©nes son los ocupados (OC)?
+    //Son las personas que durante el perÃ­odo de referencia se encontraban en una de las siguientes situaciones:
+    //1. TrabajÃ³ por lo menos una hora remunerada en dinero o en especie en la semana de referencia.
     replace inlf = 1 if p6240 == 1
     replace inlf = 1 if p6250 == 1
-    //2. Los que no trabajaron la semana de referencia, pero tenían un trabajo.
+    //2. Los que no trabajaron la semana de referencia, pero tenÃ­an un trabajo.
     replace inlf = 1 if p6260 == 1
-    //3. Trabajadores familiares sin remuneración que trabajaron en la semana de referencia por lo menos 1 hora
+    //3. Trabajadores familiares sin remuneraciÃ³n que trabajaron en la semana de referencia por lo menos 1 hora
     replace inlf = 1 if p6270 == 1
     //DANE
     // Desocupados (D): Son las personas que en la semana de referencia se encontraban en una de
     // las siguientes situaciones:
     // 1. Desempleo abierto:
     //   a. Sin empleo en la semana de referencia.
-    //   b. Hicieron diligencias en el último mes.
+    //   b. Hicieron diligencias en el Ãºltimo mes.
     //   c. Disponibilidad.
     replace inlf = 2 if p6240 == 2              & p6250 == 2 & p6351 == 1
     replace inlf = 2 if p6240 == 3              & p6250 == 2 & p6351 == 1
@@ -886,20 +886,20 @@ forvalues y = 2008/2016 {
     replace inlf = 2 if              p6280 == 1 & p6250 == 2 & p6351 == 1
     // 2. Desempleo oculto:
     //   a. Sin empleo en la semana de referencia.
-    //   b. No hicieron diligencias en el último mes, pero sí en los últimos 12 meses y tienen una razón válida de desaliento.
+    //   b. No hicieron diligencias en el Ãºltimo mes, pero sÃ­ en los Ãºltimos 12 meses y tienen una razÃ³n vÃ¡lida de desaliento.
     //   c. Disponibilidad.
-    //Razones válidas de desempleo:
+    //Razones vÃ¡lidas de desempleo:
     //  a. No hay trabajo disponible en la ciudad.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 2 
-    //  b. Está esperando que lo llamen.
+    //  b. EstÃ¡ esperando que lo llamen.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 3
-    //  f. Está esperando la temporada alta.
+    //  f. EstÃ¡ esperando la temporada alta.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 3
-    //  c. No sabe cómo buscar trabajo.
+    //  c. No sabe cÃ³mo buscar trabajo.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 4
-    //  d. Está cansado de buscar trabajo.
+    //  d. EstÃ¡ cansado de buscar trabajo.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 5
-    //  e. No encuentra trabajo apropiado en su oficio o profesión.
+    //  e. No encuentra trabajo apropiado en su oficio o profesiÃ³n.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 2
     //  g. Carece de la experiencia necesaria.
     replace inlf = 2 if p6280 == 2 & p6340 == 1 & p6351 == 1 & p6310 == 6
@@ -1555,11 +1555,11 @@ replace   urban = 1 if area == 1
 label var urban "=1 if urban"
 
 *regions
-*Región Caribe: Atlántico, Bolivar, Cesár,Córdoba,Sucre, Magdalena, La Guajira.
-*Región Oriental: Norte de Santander, Santander, Boyacá, Cundinamarca, Meta.
-*Región Central: Caldas,Risaralda, Quindío, Tolima, Huila, Caquetá, Antioquia.
-*Región Pacífica: Chocó, Cauca, Nariño, Valle.
-*Bogotá D.C.
+*RegiÃ³n Caribe: AtlÃ¡ntico, Bolivar, CesÃ¡r,CÃ³rdoba,Sucre, Magdalena, La Guajira.
+*RegiÃ³n Oriental: Norte de Santander, Santander, BoyacÃ¡, Cundinamarca, Meta.
+*RegiÃ³n Central: Caldas,Risaralda, QuindÃ­o, Tolima, Huila, CaquetÃ¡, Antioquia.
+*RegiÃ³n PacÃ­fica: ChocÃ³, Cauca, NariÃ±o, Valle.
+*BogotÃ¡ D.C.
 gen          region = .
 replace      region = 1 if dep_cod == 2  | dep_cod == 4  | dep_cod == 9  | dep_cod == 12 | dep_cod == 22 | dep_cod == 15 | dep_cod == 14
 replace      region = 2 if dep_cod == 18 | dep_cod == 21 | dep_cod == 5  | dep_cod == 11 | dep_cod == 16
@@ -1569,8 +1569,8 @@ replace      region = 5 if dep_cod == 3
 label define region 1  "Caribe"   ///
                     2  "Oriental"  ///
                     3  "Central"  ///
-                    4  "Pacífica"  ///
-                    5  "Bogotá"  ///
+                    4  "PacÃ­fica"  ///
+                    5  "BogotÃ¡"  ///
 
 label values region region
 label var    region "region"
@@ -1655,7 +1655,7 @@ label values health_type_all health_type_all
 
 *hourly gross wage
 *-----------------
-*La duración máxima legal de la jornada ordinaria de trabajo es de ocho (8) horas al día y cuarenta y ocho (48) a la semana
+*La duraciÃ³n mÃ¡xima legal de la jornada ordinaria de trabajo es de ocho (8) horas al dÃ­a y cuarenta y ocho (48) a la semana
 *48/8 = 6
 gen       min_wage_hr  = min_wage_month_tr / 4 / 48
 gen       aux1 = w_m_gross / 4
@@ -2317,28 +2317,28 @@ replace isic_rev3 = "9249" if sector4d == "9242"
 *---------------------------------
 *NPO main type
 gen     npo = ""
-replace npo = "Cultura y recreación" if isic_rev3 == "2211"
-replace npo = "Cultura y recreación" if isic_rev3 == "2212"
-replace npo = "Cultura y recreación" if isic_rev3 == "2213"
-replace npo = "Cultura y recreación" if isic_rev3 == "2219"
-replace npo = "Cultura y recreación" if isic_rev3 == "9199"
-replace npo = "Cultura y recreación" if isic_rev3 == "9211"
-replace npo = "Cultura y recreación" if isic_rev3 == "9213"
-replace npo = "Cultura y recreación" if isic_rev3 == "9214"
-replace npo = "Cultura y recreación" if isic_rev3 == "9214"
-replace npo = "Cultura y recreación" if isic_rev3 == "9231"
-replace npo = "Cultura y recreación" if isic_rev3 == "9232"
-replace npo = "Cultura y recreación" if isic_rev3 == "9233"
-replace npo = "Cultura y recreación" if isic_rev3 == "9241"
-replace npo = "Cultura y recreación" if isic_rev3 == "9199"
-replace npo = "Cultura y recreación" if isic_rev3 == "9249"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "8010"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "8021"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "8030"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "8022"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "8090"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "7310"
-replace npo = "Enseñanza e investigación" if isic_rev3 == "7320"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "2211"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "2212"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "2213"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "2219"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9199"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9211"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9213"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9214"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9214"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9231"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9232"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9233"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9241"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9199"
+replace npo = "Cultura y recreaciÃ³n" if isic_rev3 == "9249"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "8010"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "8021"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "8030"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "8022"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "8090"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "7310"
+replace npo = "EnseÃ±anza e investigaciÃ³n" if isic_rev3 == "7320"
 replace npo = "Salud" if isic_rev3 == "8511"
 replace npo = "Salud" if isic_rev3 == "8519"
 replace npo = "Salud" if isic_rev3 == "8511"
@@ -2378,18 +2378,18 @@ replace npo = "Desarrollo y vivienda" if isic_rev3 == "8532"
 replace npo = "Desarrollo y vivienda" if isic_rev3 == "9199"
 replace npo = "Desarrollo y vivienda" if isic_rev3 == "8090"
 replace npo = "Desarrollo y vivienda" if isic_rev3 == "8532"
-replace npo = "Derecho, promoción y política" if isic_rev3 == "9199"
-replace npo = "Derecho, promoción y política" if isic_rev3 == "7411"
-replace npo = "Derecho, promoción y política" if isic_rev3 == "7523"
-replace npo = "Derecho, promoción y política" if isic_rev3 == "8532"
-replace npo = "Derecho, promoción y política" if isic_rev3 == "9192"
-replace npo = "Intermediación filantrópica y promoción del voluntariado" if isic_rev3 == "6599"
-replace npo = "Intermediación filantrópica y promoción del voluntariado" if isic_rev3 == "8532"
-replace npo = "Intermediación filantrópica y promoción del voluntariado" if isic_rev3 == "7499"
-replace npo = "Intermediación filantrópica y promoción del voluntariado" if isic_rev3 == "9199"
-replace npo = "Intermediación filantrópica y promoción del voluntariado" if isic_rev3 == "9249"
+replace npo = "Derecho, promociÃ³n y polÃ­tica" if isic_rev3 == "9199"
+replace npo = "Derecho, promociÃ³n y polÃ­tica" if isic_rev3 == "7411"
+replace npo = "Derecho, promociÃ³n y polÃ­tica" if isic_rev3 == "7523"
+replace npo = "Derecho, promociÃ³n y polÃ­tica" if isic_rev3 == "8532"
+replace npo = "Derecho, promociÃ³n y polÃ­tica" if isic_rev3 == "9192"
+replace npo = "IntermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntariado" if isic_rev3 == "6599"
+replace npo = "IntermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntariado" if isic_rev3 == "8532"
+replace npo = "IntermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntariado" if isic_rev3 == "7499"
+replace npo = "IntermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntariado" if isic_rev3 == "9199"
+replace npo = "IntermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntariado" if isic_rev3 == "9249"
 replace npo = "Internacional" if isic_rev3 == "9199"
-replace npo = "Religión" if isic_rev3 == "9191"
+replace npo = "ReligiÃ³n" if isic_rev3 == "9191"
 replace npo = "Asociaciones empresariales y profesionales, sindicatos" if isic_rev3 == "9111"
 replace npo = "Asociaciones empresariales y profesionales, sindicatos" if isic_rev3 == "9112"
 replace npo = "Asociaciones empresariales y profesionales, sindicatos" if isic_rev3 == "9120"
@@ -2411,19 +2411,19 @@ replace npo_type = "Cultura y artes " if isic_rev3 == "9233"
 replace npo_type = "Deportes " if isic_rev3 == "9241"
 replace npo_type = "Otros clubes sociales y recreativos " if isic_rev3 == "9199"
 replace npo_type = "Otros clubes sociales y recreativos " if isic_rev3 == "9249"
-replace npo_type = "Enseñanza primaria y secundaria " if isic_rev3 == "8010"
-replace npo_type = "Enseñanza primaria y secundaria " if isic_rev3 == "8021"
-replace npo_type = "Enseñanza superior " if isic_rev3 == "8030"
-replace npo_type = "Otros tipos de educación (escuelas profesionales y técnicas)" if isic_rev3 == "8022"
-replace npo_type = "Otros tipos de educación (escuelas profesionales y técnicas)" if isic_rev3 == "8090"
-replace npo_type = "Investigaciones (investigaciones médicas, ciencia y tecnología)" if isic_rev3 == "7310"
-replace npo_type = "Investigaciones (investigaciones médicas, ciencia y tecnología)" if isic_rev3 == "7320"
-replace npo_type = "Hospitales y rehabilitación " if isic_rev3 == "8511"
+replace npo_type = "EnseÃ±anza primaria y secundaria " if isic_rev3 == "8010"
+replace npo_type = "EnseÃ±anza primaria y secundaria " if isic_rev3 == "8021"
+replace npo_type = "EnseÃ±anza superior " if isic_rev3 == "8030"
+replace npo_type = "Otros tipos de educaciÃ³n (escuelas profesionales y tÃ©cnicas)" if isic_rev3 == "8022"
+replace npo_type = "Otros tipos de educaciÃ³n (escuelas profesionales y tÃ©cnicas)" if isic_rev3 == "8090"
+replace npo_type = "Investigaciones (investigaciones mÃ©dicas, ciencia y tecnologÃ­a)" if isic_rev3 == "7310"
+replace npo_type = "Investigaciones (investigaciones mÃ©dicas, ciencia y tecnologÃ­a)" if isic_rev3 == "7320"
+replace npo_type = "Hospitales y rehabilitaciÃ³n " if isic_rev3 == "8511"
 replace npo_type = "Casas de salud " if isic_rev3 == "8519"
-replace npo_type = "Salud mental e intervención en crisis " if isic_rev3 == "8511"
-replace npo_type = "Salud mental e intervención en crisis " if isic_rev3 == "8512"
-replace npo_type = "Salud mental e intervención en crisis " if isic_rev3 == "8519"
-replace npo_type = "Salud mental e intervención en crisis " if isic_rev3 == "8532"
+replace npo_type = "Salud mental e intervenciÃ³n en crisis " if isic_rev3 == "8511"
+replace npo_type = "Salud mental e intervenciÃ³n en crisis " if isic_rev3 == "8512"
+replace npo_type = "Salud mental e intervenciÃ³n en crisis " if isic_rev3 == "8519"
+replace npo_type = "Salud mental e intervenciÃ³n en crisis " if isic_rev3 == "8532"
 replace npo_type = "Otros servicios de salud " if isic_rev3 == "8512"
 replace npo_type = "Otros servicios de salud " if isic_rev3 == "8519"
 replace npo_type = "Otros servicios de salud " if isic_rev3 == "9000"
@@ -2436,16 +2436,16 @@ replace npo_type = "Apoyo en materia de ingresos y mantenimiento" if isic_rev3 =
 replace npo_type = "Medio ambiente " if isic_rev3 == "9000"
 replace npo_type = "Medio ambiente " if isic_rev3 == "9199"
 replace npo_type = "Medio ambiente " if isic_rev3 == "9233"
-replace npo_type = "Protección de animales " if isic_rev3 == "0140"
-replace npo_type = "Protección de animales " if isic_rev3 == "8520"
-replace npo_type = "Protección de animales " if isic_rev3 == "9233"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "4520"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "4530"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "4540"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "6519"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "7414"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "7421"
-replace npo_type = "Desarrollo económico, social y comunitario" if isic_rev3 == "9199"
+replace npo_type = "ProtecciÃ³n de animales " if isic_rev3 == "0140"
+replace npo_type = "ProtecciÃ³n de animales " if isic_rev3 == "8520"
+replace npo_type = "ProtecciÃ³n de animales " if isic_rev3 == "9233"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "4520"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "4530"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "4540"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "6519"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "7414"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "7421"
+replace npo_type = "Desarrollo econÃ³mico, social y comunitario" if isic_rev3 == "9199"
 replace npo_type = "Vivienda " if isic_rev3 == "4510"
 replace npo_type = "Vivienda " if isic_rev3 == "4520"
 replace npo_type = "Vivienda " if isic_rev3 == "4530"
@@ -2455,18 +2455,18 @@ replace npo_type = "Vivienda " if isic_rev3 == "7020"
 replace npo_type = "Vivienda " if isic_rev3 == "8532"
 replace npo_type = "Vivienda " if isic_rev3 == "8532"
 replace npo_type = "Vivienda " if isic_rev3 == "9199"
-replace npo_type = "Empleo y capacitación " if isic_rev3 == "8090"
-replace npo_type = "Empleo y capacitación " if isic_rev3 == "8532"
-replace npo_type = "Organizaciones cívicas y de promoción " if isic_rev3 == "9199"
-replace npo_type = "Derecho y servicios jurídicos " if isic_rev3 == "7411"
-replace npo_type = "Derecho y servicios jurídicos " if isic_rev3 == "7523"
-replace npo_type = "Derecho y servicios jurídicos " if isic_rev3 == "8532"
-replace npo_type = "Organizaciones políticas " if isic_rev3 == "9192"
+replace npo_type = "Empleo y capacitaciÃ³n " if isic_rev3 == "8090"
+replace npo_type = "Empleo y capacitaciÃ³n " if isic_rev3 == "8532"
+replace npo_type = "Organizaciones cÃ­vicas y de promociÃ³n " if isic_rev3 == "9199"
+replace npo_type = "Derecho y servicios jurÃ­dicos " if isic_rev3 == "7411"
+replace npo_type = "Derecho y servicios jurÃ­dicos " if isic_rev3 == "7523"
+replace npo_type = "Derecho y servicios jurÃ­dicos " if isic_rev3 == "8532"
+replace npo_type = "Organizaciones polÃ­ticas " if isic_rev3 == "9192"
 replace npo_type = "Fundaciones que otorgan subsidios " if isic_rev3 == "6599"
-replace npo_type = "Otros tipos de intermediación filantrópica y promoción del voluntarismo" if isic_rev3 == "8532"
-replace npo_type = "Otros tipos de intermediación filantrópica y promoción del voluntarismo" if isic_rev3 == "7499"
-replace npo_type = "Otros tipos de intermediación filantrópica y promoción del voluntarismo" if isic_rev3 == "9199"
-replace npo_type = "Otros tipos de intermediación filantrópica y promoción del voluntarismo" if isic_rev3 == "9249"
+replace npo_type = "Otros tipos de intermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntarismo" if isic_rev3 == "8532"
+replace npo_type = "Otros tipos de intermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntarismo" if isic_rev3 == "7499"
+replace npo_type = "Otros tipos de intermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntarismo" if isic_rev3 == "9199"
+replace npo_type = "Otros tipos de intermediaciÃ³n filantrÃ³pica y promociÃ³n del voluntarismo" if isic_rev3 == "9249"
 replace npo_type = "Actividades internacionales " if isic_rev3 == "9199"
 replace npo_type = "Congregaciones y asociaciones religiosas" if isic_rev3 == "9191"
 replace npo_type = "Asociaciones empresariales " if isic_rev3 == "9111"
